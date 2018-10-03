@@ -1,7 +1,15 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, Text, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
-import MainScreen from './screens/Main';
+import Router from 'react-native-easy-router'
+
+import Main from './screens/Main';
+import Bundle from './screens/Bundle';
+
+const routes = {
+  Main,
+  Bundle
+}
 
 export default class App extends React.Component {
   state = {
@@ -19,10 +27,7 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <MainScreen />
-        </View>
+        <Router routes={routes} initialRoute="Main" />
       );
     }
   }

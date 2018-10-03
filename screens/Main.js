@@ -1,42 +1,19 @@
 import React from 'react'
-import styled from 'styled-components/native'
 import { TouchableHighlight, TouchableWithoutFeedback, Text, Image, View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
-import Plus from './GradientPlusIcon'
+import Plus from './svg/GradientPlusIcon'
+import {
+  MainScreenContainer,
+  AddBundleTextInputView,
+  AddBundleButton,
+  MainText,
+  MainTextWrapper,
+  BundleItemText,
+  BundleItemWrapper,
+  BundlesList
+} from './MainViews'
 
-const statusBarHeight = 20;
-
-const MainScreenContainer = styled.View`
-  padding: ${32 + statusBarHeight}px 32px;
-`
-
-const MainText = styled.Text`
-  font-size: 32px;
-  font-family: 'gotham-black';
-`
-
-const MainTextWrapper = styled.Text`
-  margin-bottom: 12px;
-`
-
-
-
-const AddBundleButton = styled.View`
-  align-self: center;
-`
-const AddBundleButtonText = styled.Text`
-  padding: 4px;
-  color: #4a76a8;
-`
-
-
-const AddBundleTextInputView = styled.TextInput`
-  width: 100%;
-  padding: 0;
-  border-bottom-color: ${ ({ borderColor }) => borderColor };
-  border-bottom-width: 1px;
-`
 
 class AddBundleTextInput extends React.Component {
   state = { isFocused: false }
@@ -62,26 +39,9 @@ class AddBundleTextInput extends React.Component {
   }
 }
 
-
-const BundlesList = styled.View`
-  margin: 0 0 24px 0;
-`
-
-const BundleItemWrapper = styled.View`
-  align-self: flex-start;
-  padding-left: 0;
-`
-
-const BundleItemText = styled.Text`
-  padding: 4px 4px 4px 0;
-  font-family: 'gotham-regular';
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-`
-
-const BundleItem = ({ children }) => (
+const BundleItem = ({ onPress, children }) => (
   <BundleItemWrapper>
-    <Pressable onPress={() => {}} underlayColor={ 'rgba(1, 1, 1, .05)' }>
+    <Pressable onPress={onPress} underlayColor={ 'rgba(1, 1, 1, .05)' }>
       <BundleItemText>{ children }</BundleItemText>
     </Pressable>
   </BundleItemWrapper>
@@ -111,11 +71,8 @@ class CreateBundle extends React.Component {
 }
 
 class Pressable extends React.Component {
-  state = { isPressed: false }
-
   togglePressed = isPressed => _ => {
     this.view.transitionTo({ opacity: isPressed ? 0.4 : 1 }, 130)
-    this.setState({ isPressed })
   }
 
   handleTextRef = ref => this.view = ref
@@ -137,6 +94,10 @@ class Pressable extends React.Component {
 
 export default class MainScreen extends React.Component {
   render() {
+    const navigate = this.props.router
+      ? name => _ => this.props.router.push.Bundle({ name })
+      : _ => {}
+
     return (
       <MainScreenContainer>
         <MainTextWrapper>
@@ -144,12 +105,11 @@ export default class MainScreen extends React.Component {
         </MainTextWrapper>
 
         <BundlesList>
-          <BundleItem>Что почитать</BundleItem>
-          <BundleItem>Идеи для приложений</BundleItem>
-          <BundleItem>Тексты репов</BundleItem>
+          <BundleItem onPress={navigate('Что почитать')}>Что почитать</BundleItem>
+          <BundleItem onPress={navigate('Идеи для приложений')}>Идеи для приложений</BundleItem>
+          <BundleItem onPress={navigate('Тексты репов')}>Тексты репов</BundleItem>
         </BundlesList>
 
-        {/*<AddBundleTextInput underlineColorAndroid={'#4a76a8'}>kek</AddBundleTextInput>*/}
         <CreateBundle />
       </MainScreenContainer>
     );
