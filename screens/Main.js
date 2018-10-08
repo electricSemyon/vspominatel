@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableHighlight, TouchableWithoutFeedback, Text, Image, View } from 'react-native'
-import * as Animatable from 'react-native-animatable'
+import Pressable from './Pressable'
 
 import Plus from './svg/GradientPlusIcon'
 import {
@@ -67,28 +67,6 @@ class CreateBundle extends React.Component {
         ) }
       </View>
     )
-  }
-}
-
-class Pressable extends React.Component {
-  togglePressed = isPressed => _ => {
-    this.view.transitionTo({ opacity: isPressed ? 0.4 : 1 }, 130)
-  }
-
-  handleTextRef = ref => this.view = ref
-
-  render() {
-    const { children, ...props } = this.props
-
-    return (
-      <TouchableWithoutFeedback
-        onPressIn={this.togglePressed(true)}
-        onPressOut={this.togglePressed(false)}
-        { ...props }
-      >
-        <Animatable.View style={{ padding: 0 }} ref={this.handleTextRef}>{ children }</Animatable.View>
-      </TouchableWithoutFeedback>
-    );
   }
 }
 

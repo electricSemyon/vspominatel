@@ -29,7 +29,6 @@ export const NoteContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  max-height: 160px;
   background-color: #fff;
   margin-bottom: 6px;
 `
@@ -46,12 +45,13 @@ export const NoteContent = styled.View`
   position: relative;
   width: 90%;
   padding-right: 10%;
-  max-height: 160px;
-  align-items: flex-start;
+  max-height: 150px;
 `
 
-export const NoteText = styled.View`
-  margin-bottom: 16px;
+export const NoteText = styled.Text`
+  margin-bottom: 8px;
+  font-family: 'gotham-regular';
+  line-height: 18px;
 `
 
 export const FaderWrapper = styled.View`
@@ -59,4 +59,13 @@ export const FaderWrapper = styled.View`
   height: 60px;
   width: 100%;
   bottom: 0;
+`
+
+export const Line = styled.View`
+  width: 2px;
+  background-color: #f1f1f1;
+  height: 150%;
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
 `
