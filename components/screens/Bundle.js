@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 
-import { MainTextWrapper, MainText } from './MainViews'
-import { BundleName, NotesList, NoteContainer, FaderWrapper, BundleScreenContainer, StarContainer, NoteContent, NoteText, Line } from './BundleViews'
-import StarButton from './StarButton'
+import { MainTextWrapper, MainText } from '../MainViews'
+import { BundleName, NotesList, NoteContainer, FaderWrapper, BundleScreenContainer, StarContainer, NoteContent, NoteText, Line } from '../BundleViews'
+import StarButton from '../StarButton'
 
-import Fader from './svg/FaderGradient'
+import Fader from '../svg/FaderGradient'
 
 const notes = [
   {

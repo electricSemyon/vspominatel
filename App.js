@@ -3,8 +3,8 @@ import { Platform, StatusBar, Text, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import Router from 'react-native-easy-router'
 
-import Main from './screens/Main';
-import Bundle from './screens/Bundle';
+import Main from './components/screens/Main';
+import Bundle from './components/screens/Bundle';
 
 const routes = {
   Main,

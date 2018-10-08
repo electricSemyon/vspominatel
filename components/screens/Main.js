@@ -1,8 +1,8 @@
 import React from 'react'
 import { TouchableHighlight, TouchableWithoutFeedback, Text, Image, View } from 'react-native'
-import Pressable from './Pressable'
+import Pressable from '../Pressable'
 
-import Plus from './svg/GradientPlusIcon'
+import Plus from '../svg/GradientPlusIcon'
 import {
   MainScreenContainer,
   AddBundleTextInputView,
@@ -12,7 +12,7 @@ import {
   BundleItemText,
   BundleItemWrapper,
   BundlesList
-} from './MainViews'
+} from '../MainViews'
 
 
 class AddBundleTextInput extends React.Component {
