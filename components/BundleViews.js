@@ -51,7 +51,7 @@ export const NoteContent = styled.View`
 export const NoteText = styled.Text`
   margin-bottom: 8px;
   font-family: 'gotham-regular';
-  line-height: 18px;
+  line-height: 20px;
 `
 
 export const FaderWrapper = styled.View`
